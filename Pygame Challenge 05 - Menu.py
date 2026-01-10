@@ -45,5 +45,83 @@
 # 
 # Good luck!
 #-----------------------------------------------------------------------------
+import pygame
+pygame.init()
+
+# ---------- SETUP ----------
+WIDTH, HEIGHT = 500, 500
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Gamestate Menu Lab")
+clock = pygame.time.Clock()
+font = pygame.font.SysFont(None, 30)
+
+# ---------- GAME STATES ----------
+MENU = "menu"
+SCREEN1 = "screen1"
+SCREEN2 = "screen2"
+SCREEN3 = "screen3"
+state = MENU
+
+# ---------- BUTTONS (rectangles) ----------
+btn1 = pygame.Rect(150, 150, 200, 40)
+btn2 = pygame.Rect(150, 210, 200, 40)
+btn3 = pygame.Rect(150, 270, 200, 40)
+back_btn = pygame.Rect(20, 440, 120, 40)
+
+# ---------- MAIN LOOP ----------
+running = True
+while running:
+    clock.tick(60)
+    mouse = pygame.mouse.get_pos()
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # MENU BUTTONS
+            if state == MENU:
+                if btn1.collidepoint(mouse):
+                    state = SCREEN1
+                if btn2.collidepoint(mouse):
+                    state = SCREEN2
+                if btn3.collidepoint(mouse):
+                    state = SCREEN3
+
+            # BACK BUTTON
+            if state != MENU:
+                if back_btn.collidepoint(mouse):
+                    state = MENU
+
+    # ---------- DRAW ----------
+    if state == MENU:
+        screen.fill((200, 220, 255))  # backdrop 1
+
+        pygame.draw.rect(screen, (180,180,180), btn1)
+        pygame.draw.rect(screen, (180,180,180), btn2)
+        pygame.draw.rect(screen, (180,180,180), btn3)
+
+        screen.blit(font.render("Screen 1", True, (0,0,0)), (200, 160))
+        screen.blit(font.render("Screen 2", True, (0,0,0)), (200, 220))
+        screen.blit(font.render("Screen 3", True, (0,0,0)), (200, 280))
+
+    elif state == SCREEN1:
+        screen.fill((255, 200, 200))  # backdrop 2
+        pygame.draw.rect(screen, (150,150,150), back_btn)
+        screen.blit(font.render("BACK", True, (0,0,0)), (50, 450))
+
+    elif state == SCREEN2:
+        screen.fill((200, 255, 200))  # backdrop 3
+        pygame.draw.rect(screen, (150,150,150), back_btn)
+        screen.blit(font.render("BACK", True, (0,0,0)), (50, 450))
+
+    elif state == SCREEN3:
+        screen.fill((200, 200, 255))  # backdrop 4
+        pygame.draw.rect(screen, (150,150,150), back_btn)
+        screen.blit(font.render("BACK", True, (0,0,0)), (50, 450))
+
+    pygame.display.flip()
+
+pygame.quit()
 
 
