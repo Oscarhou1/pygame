@@ -1,15 +1,15 @@
 # -----------------------------------------------------------------------------
 # ANIMATION LAB - SCROLLING BACKGROUND
-# 
+#
 # Use your new knowledge of drawing and colours with Pygame to make this a full screen of a plaid pattern.
-# 
+#
 # Lab Requirements:
 # LEVEL 3
 # A background that scrolls across the screen creating the illusion of movement
 # LEVEL 4+
-# Everything listed in level 3 
+# Everything listed in level 3
 # Multiple layers moving at different speeds to create the parallax effect, like you see to the left
-# 
+#
 # Recommended Lessons:
 # Recommended Lessons:
 # Github
@@ -21,13 +21,13 @@
 # Pygame Colours
 # Pygame Images
 # Pygame Animation
-# 
+#
 # Challenge Difficulty:*
-# 
+#
 # Remember the purpose of this challenge is to help you practice Pygame coding not to find code online or copy from your friends! This challenge will be checked for Plagiarism.
-# 
+#
 # Upload your code to githunb when finished
-# 
+#
 # Good luck!
 #-----------------------------------------------------------------------------
 import pygame
@@ -41,12 +41,12 @@ clock = pygame.time.Clock()
 FPS = 60
 
 # ---------- LOAD IMAGES ----------
-sky = pygame.image.load("sky.png")
-mountains = pygame.image.load("mountains.png")
-ground = pygame.image.load("ground.png")
+sky = pygame.image.load("sky.jpg")
+mountains = pygame.image.load("mountains.jpg")
+ground = pygame.image.load("ground.jpg")
 
-sky = pygame.transform.scale(sky, (WIDTH, HEIGHT))
-mountains = pygame.transform.scale(mountains, (WIDTH, HEIGHT))
+sky = pygame.transform.scale(sky, (400, 300))
+mountains = pygame.transform.scale(mountains, (800,400))
 ground = pygame.transform.scale(ground, (WIDTH, HEIGHT))
 
 # ---------- START POSITIONS ----------
@@ -94,5 +94,3 @@ while running:
     pygame.display.update()
 
 pygame.quit()
-
-
